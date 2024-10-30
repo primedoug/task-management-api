@@ -12,14 +12,14 @@ namespace TaskManagement.Application.Services
             _todoRepository = todoRepository;
         }
 
-        public async Task<IEnumerable<TodoItem>> GetAllAsync() => await _todoRepository.GetAllAsync();
+        public async Task<IEnumerable<TodoItem>> GetAll() => await _todoRepository.GetAllAsync();
 
-        public async Task<TodoItem?> GetByIdAsync(int id) => await _todoRepository.GetByIdAsync(id);
+        public async Task<TodoItem?> GetById(int id) => await _todoRepository.GetByIdAsync(id);
 
-        public async Task AddAsync(TodoItem todoItem) => await _todoRepository.AddAsync(todoItem);
+        public async Task Add(TodoItem todoItem) => await _todoRepository.AddAsync(todoItem);
 
-        public async Task UpdateAsync(TodoItem todoItem) => await _todoRepository.UpdateAsync(todoItem);
+        public async Task Update(TodoItem todoItem) => await _todoRepository.UpdateAsync(todoItem);
 
-        public async Task DeleteAsync(int id) => await _todoRepository.DeleteAsync(id);
+        public async Task Delete(int id) => await _todoRepository.DeleteAsync(id);
     }
 }

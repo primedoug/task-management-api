@@ -16,12 +16,12 @@ namespace TaskManagement.API.Controllers
         }
 
         [HttpGet("get-all")]
-        public async Task<IEnumerable<TodoItem>> GetAll() => await _todoService.GetAllAsync();
+        public async Task<IEnumerable<TodoItem>> GetAll() => await _todoService.GetAll();
 
         [HttpGet("get-byid/{id}")]
         public async Task<ActionResult<TodoItem>> GetById(int id)
         {
-            TodoItem? todoItem = await _todoService.GetByIdAsync(id);
+            TodoItem? todoItem = await _todoService.GetById(id);
             if (todoItem is null) return NotFound();
             return Ok(todoItem);
         }
@@ -29,7 +29,7 @@ namespace TaskManagement.API.Controllers
         [HttpPost("add")]
         public async Task<IActionResult> Create(TodoItem todoItem)
         {
-            await _todoService.AddAsync(todoItem);
+            await _todoService.Add(todoItem);
             return CreatedAtAction(nameof(GetById), new { id = todoItem.Id }, todoItem);
         }
 
@@ -37,14 +37,14 @@ namespace TaskManagement.API.Controllers
         public async Task<IActionResult> Update(int id, TodoItem todoItem)
         {
             if(id != todoItem.Id) return BadRequest();
-            await _todoService.UpdateAsync(todoItem);
+            await _todoService.Update(todoItem);
             return NoContent();
         }
 
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _todoService.DeleteAsync(id);
+            await _todoService.Delete(id);
             return NoContent();
         }
     }
